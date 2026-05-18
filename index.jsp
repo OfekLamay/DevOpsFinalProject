@@ -1,22 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="he">
 <head>
-    <title>DevOps Project</title>
+    <title>DevOps Final Project</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+            background-color: #f4f4f9;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .search-box { 
+            padding: 10px; 
+            font-size: 16px; 
+            width: 250px; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn { 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover { background-color: #357ae8; }
+    </style>
 </head>
 <body>
 
-    <h2>DevOps Final Project Application</h2>
+    <div class="container">
+        <h2>פרויקט גמר - DevOps</h2>
+        
+        <form action="https://www.google.com/search" method="GET" target="_blank">
+            <label>מה תרצו לחפש היום?</label><br><br>
+            
+            <input type="text" name="q" class="search-box" placeholder="הקלידו טקסט לחיפוש..." required>
+            <br><br>
+            
+            <input type="submit" class="btn" value="חפש בגוגל">
+        </form>
 
-    <p>
-        <a href="https://github.com" target="_blank">Go to GitHub Website</a>
-    </p>
-
-    <form action="" method="GET">
-        <label>Enter Text:</label>
-        <input type="text" name="userData" placeholder="Type here...">
-        <input type="submit" value="Submit">
-    </form>
+        <br><br>
+        <p>
+            <a href="https://github.com/OfekLamay/DevOpsFinalProject.git" target="_blank">למעבר לרפוזיטורי ב-GitHub</a>
+        </p>
+    </div>
 
 </body>
 </html>
