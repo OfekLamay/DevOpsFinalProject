@@ -56,8 +56,9 @@ class TestFulltest():
     # Check that the amount input box exists, click on it and add a value
     elements = self.driver.find_elements(By.ID, "amount")
     assert len(elements) > 0
-    self.driver.find_element(By.ID, "amount").click()
-    self.driver.find_element(By.ID, "amount").send_keys("25")
+    amount_field = self.driver.find_element(By.ID, "amount")
+    amount_field.click()
+    amount_field.send_keys("25")
     time.sleep(1)
     
     # Verify that the number was inserted well, as a number
