@@ -41,7 +41,7 @@
     <div class="container">
         <h2>פרויקט גמר - DevOps</h2>
         
-        <form action="https://www.google.com/search" method="GET" target="_blank">
+        <form action="https://www.google.com/search" method="GET" target="_self">
             <label>מה תרצו לחפש היום?</label><br><br>
             
             <input type="text" name="q" class="search-box" placeholder="הקלידו טקסט לחיפוש..." required>
