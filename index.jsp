@@ -97,7 +97,7 @@
     <div class="actions">
         <a href="?action=clear" class="action-link">נקה נתונים</a>
         
-
+        <a href="https://github.com" target="_blank" style="color: #0066cc;">צפייה בקוד</a>
     </div>
 </div>
 
