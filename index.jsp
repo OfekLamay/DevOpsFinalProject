@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%
+    // 1. טיפול בקישור: אם המשתמש לחץ על "נקה נתונים", השרת יקבל בקשת GET וימחק את הזיכרון
+    String action = request.getParameter("action");
+    if ("clear".equals(action)) {
+        session.removeAttribute("expenses");
+        response.sendRedirect(request.getRequestURI()); // רענון הדף נקי
+        return;
+    }
+
     // הגדרת רשימת ההוצאות בזיכרון השרת (Session)
     List<Map<String, String>> expenses = (List<Map<String, String>>) session.getAttribute("expenses");
     if (expenses == null) {
@@ -8,7 +16,7 @@
         session.setAttribute("expenses", expenses);
     }
 
-    // קליטת נתונים מהטופס אם נשלחו (בקשת POST)
+    // 2. טיפול בכפתור: קליטת נתונים מהטופס אם נשלחה בקשת POST
     String newName = request.getParameter("expenseName");
     String newAmount = request.getParameter("amount");
 
@@ -37,8 +45,9 @@
         th { background-color: #f2f2f2; color: #333; }
         tr:nth-child(even) { background-color: #f9f9f9; }
         .total-row { font-weight: bold; background-color: #e7f3fe !important; }
-        .footer-link { display: block; margin-top: 25px; text-align: center; color: #0066cc; text-decoration: none; font-weight: bold; }
-        .footer-link:hover { text-decoration: underline; }
+        .actions { margin-top: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .action-link { color: #d9534f; text-decoration: none; font-weight: bold; border: 1px solid #d9534f; padding: 8px 12px; border-radius: 4px; }
+        .action-link:hover { background-color: #d9534f; color: white; }
     </style>
 </head>
 <body>
@@ -66,7 +75,6 @@
         <tbody>
             <% 
                 double totalSum = 0;
-                // הדפסת השורות מהשרת
                 for (Map<String, String> exp : expenses) { 
                     double currentAmount = 0;
                     try { currentAmount = Double.parseDouble(exp.get("amount")); } catch(Exception e){}
@@ -86,7 +94,11 @@
         </tfoot>
     </table>
 
-    <a href="https://github.com" class="footer-link" target="_blank">צפייה בקוד ב-GitHub</a>
+    <div class="actions">
+        <a href="?action=clear" class="action-link">נקה נתונים</a>
+        
+        <a href="https://github.com" target="_blank" style="color: #0066cc;">צפייה בקוד</a>
+    </div>
 </div>
 
 </body>
