@@ -1,93 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<%
-    // הגדרת רשימת ההוצאות בזיכרון השרת (Session)
-    List<Map<String, String>> expenses = (List<Map<String, String>>) session.getAttribute("expenses");
-    if (expenses == null) {
-        expenses = new ArrayList<Map<String, String>>();
-        session.setAttribute("expenses", expenses);
-    }
-
-    // קליטת נתונים מהטופס אם נשלחו (בקשת POST)
-    String newName = request.getParameter("expenseName");
-    String newAmount = request.getParameter("amount");
-
-    if (newName != null && newAmount != null && !newName.trim().isEmpty()) {
-        Map<String, String> newExpense = new HashMap<String, String>();
-        newExpense.put("name", newName);
-        newExpense.put("amount", newAmount);
-        expenses.add(newExpense);
-    }
-%>
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html dir="rtl" lang="he">
 <head>
-    <meta charset="UTF-8">
-    <title>DevOps Cost Manager</title>
+    <title>DevOps Final Project</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 50px; direction: rtl; }
-        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 450px; margin: auto; }
-        h2 { color: #333; text-align: center; }
-        label { font-weight: bold; color: #555; display: block; margin-top: 15px; }
-        input[type="text"] { width: 100%; padding: 10px; margin: 5px 0 20px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-        button { background-color: #4CAF50; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
-        button:hover { background-color: #45a049; }
-        table { width: 100%; border-collapse: collapse; margin-top: 25px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: right; }
-        th { background-color: #f2f2f2; color: #333; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .total-row { font-weight: bold; background-color: #e7f3fe !important; }
-        .footer-link { display: block; margin-top: 25px; text-align: center; color: #0066cc; text-decoration: none; font-weight: bold; }
-        .footer-link:hover { text-decoration: underline; }
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
+        .container { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        .search-box { padding: 10px; font-size: 16px; width: 250px; border: 1px solid #ccc; border-radius: 5px; }
+        .btn { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #4285F4; color: white; border: none; border-radius: 5px; }
+        .btn:hover { background-color: #357ae8; }
+        .success-msg { color: #0f9d58; font-weight: bold; font-size: 18px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Mini Cost Manager 💸</h2>
-    
-    <form method="POST" action="">
-        <label for="expenseName">תיאור ההוצאה:</label>
-        <input type="text" id="expenseName" name="expenseName" placeholder="לדוגמה: שרת ב-DigitalOcean" required>
+    <div class="container">
+        <h2>מערכת ניהול משימות - DevOps</h2>
         
-        <label for="amount">סכום ($):</label>
-        <input type="text" id="amount" name="amount" placeholder="לדוגמה: 15.50" required>
+        <% 
+            String taskName = request.getParameter("taskData");
+            if (taskName != null && !taskName.trim().isEmpty()) {
+                // המרת תווים למניעת בעיות אבטחה (XSS) בתצוגה
+                String safeTaskName = taskName.replace("<", "&lt;").replace(">", "&gt;");
+                out.println("<div class='success-msg' id='success-message'>המשימה '" + safeTaskName + "' נקלטה בהצלחה!</div>");
+            }
+        %>
         
-        <button type="submit">הוסף הוצאה</button>
-    </form>
+        <form action="index.jsp" method="GET">
+            <label>הכנס משימה חדשה:</label><br><br>
+            
+            <input type="text" name="taskData" id="taskInput" class="search-box" placeholder="לדוגמה: הגדרת Jenkins..." required>
+            <br><br>
+            
+            <input type="submit" class="btn" id="submitBtn" value="שמור משימה">
+        </form>
 
-    <table id="expensesTable">
-        <thead>
-            <tr>
-                <th>תיאור</th>
-                <th>סכום ($)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% 
-                double totalSum = 0;
-                // הדפסת השורות מהשרת
-                for (Map<String, String> exp : expenses) { 
-                    double currentAmount = 0;
-                    try { currentAmount = Double.parseDouble(exp.get("amount")); } catch(Exception e){}
-                    totalSum += currentAmount;
-            %>
-                <tr>
-                    <td><%= exp.get("name") %></td>
-                    <td><%= exp.get("amount") %></td>
-                </tr>
-            <% } %>
-        </tbody>
-        <tfoot>
-            <tr class="total-row">
-                <td>סך הכל:</td>
-                <td><%= String.format("%.2f", totalSum) %></td>
-            </tr>
-        </tfoot>
-    </table>
-
-    <a href="https://github.com" class="footer-link" target="_blank">צפייה בקוד ב-GitHub</a>
-</div>
+        <br><br>
+        <p>
+            <a href="https://github.com/OfekLamay/DevOpsFinalProject.git" target="_blank">למעבר לרפוזיטורי ב-GitHub</a>
+        </p>
+    </div>
 
 </body>
 </html>
