@@ -40,13 +40,11 @@ public class Stress extends Simulation {
         
         constantUsersPerSec(100).during(Duration.ofSeconds(30)), 
         constantUsersPerSec(130).during(Duration.ofSeconds(30)), 
-
         constantUsersPerSec(160).during(Duration.ofSeconds(40)), 
         constantUsersPerSec(190).during(Duration.ofSeconds(40)), 
         constantUsersPerSec(210).during(Duration.ofSeconds(40)), 
         constantUsersPerSec(230).during(Duration.ofSeconds(40)), 
         constantUsersPerSec(250).during(Duration.ofSeconds(40)), 
-
 
         constantUsersPerSec(50).during(Duration.ofSeconds(40))  
       )
