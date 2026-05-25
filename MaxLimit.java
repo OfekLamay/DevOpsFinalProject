@@ -9,7 +9,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import static io.gatling.javaapi.jdbc.JdbcDsl.*;
 
-public class maxLimit extends Simulation {
+public class MaxLimit extends Simulation {
 
   private HttpProtocolBuilder httpProtocol = http
     .baseUrl("http://165.245.208.238:8080")
