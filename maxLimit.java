@@ -9,7 +9,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import static io.gatling.javaapi.jdbc.JdbcDsl.*;
 
-public class stress extends Simulation {
+public class maxLimit extends Simulation {
 
   private HttpProtocolBuilder httpProtocol = http
     .baseUrl("http://165.245.208.238:8080")
@@ -25,7 +25,7 @@ public class stress extends Simulation {
     Map.entry("Origin", "http://165.245.208.238:8080")
   );
 
-  private ScenarioBuilder scn = scenario("stress")
+  private ScenarioBuilder scn = scenario("maxLimit")
     .exec(
       http("request_0")
         .post("/OfekLamay_BenLetai_LinoyAvraham_TomerBiton_AmitHazan/index.jsp?taskData=%D7%A1%D7%A9%D7%93%D7%92%D7%A9%D7%93%D7%92")
