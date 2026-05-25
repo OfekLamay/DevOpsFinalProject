@@ -49,9 +49,16 @@ class TestFulltest():
     # Check that the expenseName text box exists, click on it and add a value
     elements = self.driver.find_elements(By.ID, "expenseName")
     assert len(elements) > 0
-    self.driver.find_element(By.ID, "expenseName").click()
-    self.driver.find_element(By.ID, "expenseName").send_keys("משקה")
+    expense_field = self.driver.find_element(By.ID, "expenseName")
+    expense_field.click()
+    expense_field.send_keys("משקה")
     time.sleep(1)
+    
+    # Verify that the expense name was inserted well
+    try:
+        assert expense_field.get_attribute("value") == "משקה"
+    except AssertionError as e:
+        print(e)
     
     # Check that the amount input box exists, click on it and add a value
     elements = self.driver.find_elements(By.ID, "amount")
@@ -64,7 +71,7 @@ class TestFulltest():
     # Verify that the number was inserted well, as a number
     entered_amount = amount_field.get_attribute("value")
     try:
-        assert entered_amount.isdigit(), f"Verify Failed: Expected only numbers in amount, but got '{entered_amount}'"
+        assert entered_amount.isdigit()
         print("Verify Passed: Amount contains only numeric characters.")
     except AssertionError as e:
         print(e)
