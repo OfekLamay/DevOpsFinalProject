@@ -37,11 +37,11 @@ public class maxLimit extends Simulation {
   {
     setUp(
       scn.injectOpen(
-        constantUsersPerSec(60).during(Duration.ofMinutes(1)),  // מדרגה 1
-        constantUsersPerSec(120).during(Duration.ofMinutes(1)),  // מדרגה 2
-        constantUsersPerSec(180).during(Duration.ofMinutes(1)),  // מדרגה 3
-        constantUsersPerSec(240).during(Duration.ofMinutes(1)), // מדרגה 4 - קצה היכולת
-        constantUsersPerSec(300).during(Duration.ofMinutes(1))  // מדרגה 5 - קריסה
+        constantUsersPerSec(60).during(Duration.ofMinutes(1)),
+        constantUsersPerSec(120).during(Duration.ofMinutes(1)),
+        constantUsersPerSec(180).during(Duration.ofMinutes(1)),
+        constantUsersPerSec(240).during(Duration.ofMinutes(1)),
+        constantUsersPerSec(300).during(Duration.ofMinutes(1))
       )
     ).protocols(httpProtocol);
   }
