@@ -36,10 +36,12 @@ public class Load extends Simulation {
 
   {
     setUp(
-      scn.injectClosed(
-        rampConcurrentUsers(10).to(110).during(Duration.ofMinutes(1)),
-        constantConcurrentUsers(110).during(Duration.ofMinutes(3)),
-        rampConcurrentUsers(110).to(10).during(Duration.ofMinutes(1))
+      scn.injectOpen(
+			rampUsersPerSec(10).to(108).during(Duration.ofMinutes(1)),                   
+      
+			constantUsersPerSec(108).during(Duration.ofMinutes(3)),
+                   
+			rampUsersPerSec(108).to(10).during(Duration.ofMinutes(1))
       )
     ).protocols(httpProtocol);
   }
