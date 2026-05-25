@@ -36,7 +36,7 @@ public class Load extends Simulation {
 
   {
     setUp(
-      scn.injectOpen(
+      scn.injectClosed(
 			rampUsersPerSec(10).to(110).during(Duration.ofMinutes(1)),                   
       
 			constantUsersPerSec(110).during(Duration.ofMinutes(3)),
