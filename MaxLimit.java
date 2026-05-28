@@ -13,7 +13,6 @@ public class MaxLimit extends Simulation {
 
   private HttpProtocolBuilder httpProtocol = http
     .baseUrl("http://165.245.208.238:8080")
-    .shareConnections()
     .inferHtmlResources(AllowList(), DenyList(".*\\.js", ".*\\.css", ".*\\.gif", ".*\\.jpeg", ".*\\.jpg", ".*\\.ico", ".*\\.woff", ".*\\.woff2", ".*\\.(t|o)tf", ".*\\.png", ".*\\.svg", ".*detectportal\\.firefox\\.com.*"))
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
     .acceptEncodingHeader("gzip, deflate")
