@@ -1,0 +1,278 @@
+{
+  "id": "741d6863-501c-4c04-8232-79c15068a047",
+  "version": "2.0",
+  "name": "DevOpsPart7 - Selenium",
+  "url": "http://165.245.208.238:8080",
+  "tests": [{
+    "id": "85a281a0-8ff4-4ac1-bdcf-9403768657b4",
+    "name": "full_test",
+    "commands": [{
+      "id": "bd84e998-deea-4f03-a40f-3b666aca4980",
+      "comment": "",
+      "command": "open",
+      "target": "/OfekLamay_BenLetai_LinoyAvraham_TomerBiton_AmitHazan/index.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b2545bdf-27d8-47e7-af8d-4578d256d410",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "934x772",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "99e3b4fa-a6b6-484e-bc9e-021a508ca802",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=צפייה בקוד",
+      "targets": [
+        ["linkText=צפייה בקוד", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'צפייה בקוד')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'https://github.com')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'צפייה בקוד')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80289bc5-6a43-4073-8c4c-7359d9f64bd3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=צפייה בקוד",
+      "targets": [
+        ["linkText=צפייה בקוד", "linkText"],
+        ["css=a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'צפייה בקוד')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'https://github.com')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'צפייה בקוד')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win180",
+      "windowTimeout": 2000
+    }, {
+      "id": "c637669b-f1ab-4507-9cc5-772cefcc99a8",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "root",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66f03782-ecfa-42f9-a1b0-6f3ca6145ad5",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win180}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54e868a7-613e-4a13-a80d-c6059f9ede6c",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01995fd6-9adc-4107-8618-6fb731488e44",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a348ae2-9f9b-4af4-b0de-4fa57c723f2c",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'הוסף הוצאה')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6caa370b-94c8-4a63-a2ce-59790550b8e0",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return document.getElementById(\"amount\").validationMessage;",
+      "targets": [],
+      "value": "errorMsg"
+    }, {
+      "id": "21730ce7-18fc-4e2d-b0c8-cfcfcb0771c9",
+      "comment": "",
+      "command": "assert",
+      "target": "errorMsg",
+      "targets": [],
+      "value": "Please fill out this field."
+    }, {
+      "id": "1b2a4260-6481-40af-84b2-e38940c2d3e3",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=expenseName",
+      "targets": [
+        ["id=expenseName", "id"],
+        ["name=expenseName", "name"],
+        ["css=#expenseName", "css:finder"],
+        ["xpath=//input[@id='expenseName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "24c06480-1c87-442d-821f-67963fcd3ffc",
+      "comment": "",
+      "command": "click",
+      "target": "id=expenseName",
+      "targets": [
+        ["id=expenseName", "id"],
+        ["name=expenseName", "name"],
+        ["css=#expenseName", "css:finder"],
+        ["xpath=//input[@id='expenseName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "57e6aafe-a464-4cfd-a9a0-a1d9ef95de4d",
+      "comment": "",
+      "command": "executeScript",
+      "target": "document.getElementById(\"expenseName\").value = \"משקה\";",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d76894f6-b327-46a8-9e50-f0691f89ce1e",
+      "comment": "",
+      "command": "verifyValue",
+      "target": "id=expenseName",
+      "targets": [
+        ["id=amount", "id"],
+        ["name=amount", "name"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "משקה"
+    }, {
+      "id": "be8da8fc-3d94-4e9b-af12-2e0328394b31",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=amount",
+      "targets": [
+        ["id=amount", "id"],
+        ["name=amount", "name"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23ff85ac-ae74-4642-a96d-565537e9c5ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=amount",
+      "targets": [
+        ["id=amount", "id"],
+        ["name=amount", "name"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17116e75-e460-47aa-8eb0-0c3864214de5",
+      "comment": "",
+      "command": "executeScript",
+      "target": "document.getElementById(\"amount\").value = \"25\";",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7daa701f-2504-480b-b4c2-f58b172972c0",
+      "comment": "",
+      "command": "verifyValue",
+      "target": "id=amount",
+      "targets": [
+        ["id=amount", "id"],
+        ["name=amount", "name"],
+        ["css=#amount", "css:finder"],
+        ["xpath=//input[@id='amount']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "25"
+    }, {
+      "id": "6f7234a8-6f59-48e4-b08d-9cc91c16bb96",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'הוסף הוצאה')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "25e55b1f-ec9c-4b7e-bebf-3746283ece21",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'הוסף הוצאה')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "193e060b-a853-4a15-8643-e09ea52c4183",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//td[text()='25']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63f9c0ab-a03c-4661-aa08-38af088d86b0",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "linkText=נקה נתונים",
+      "targets": [
+        ["linkText=נקה נתונים", "linkText"],
+        ["css=.action-link", "css:finder"],
+        ["xpath=//a[contains(text(),'נקה נתונים')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '?action=clear')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'נקה נתונים')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a60c7e05-f0eb-484e-8a18-813b70e43a64",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=נקה נתונים",
+      "targets": [
+        ["linkText=נקה נתונים", "linkText"],
+        ["css=.action-link", "css:finder"],
+        ["xpath=//a[contains(text(),'נקה נתונים')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '?action=clear')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'נקה נתונים')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e630be33-bcd4-456e-a49f-0d2a5b96306f",
+      "comment": "",
+      "command": "verifyValue",
+      "target": "id=expenseName",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0cd6f540-8ac7-49b6-bc2c-7e1bc998908d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["85a281a0-8ff4-4ac1-bdcf-9403768657b4"]
+  }],
+  "urls": ["http://165.245.208.238:8080/"],
+  "plugins": []
+}
