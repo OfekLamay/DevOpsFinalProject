@@ -46,6 +46,12 @@ class TestFulltest():
     self.driver.switch_to.window(self.vars["root"])
     time.sleep(1)
     
+    # Check that the submit button exists and click on it
+    elements = self.driver.find_elements(By.CSS_SELECTOR, "button")
+    assert len(elements) > 0
+    self.driver.find_element(By.CSS_SELECTOR, "button").click()
+    time.sleep(2)
+    
     # Check empty form submission validation (validation message) 
     self.driver.find_element(By.CSS_SELECTOR, "button").click()
     time.sleep(1)
@@ -83,11 +89,6 @@ class TestFulltest():
     except AssertionError as e:
         print(e)
     
-    # Check that the submit button exists and click on it
-    elements = self.driver.find_elements(By.CSS_SELECTOR, "button")
-    assert len(elements) > 0
-    self.driver.find_element(By.CSS_SELECTOR, "button").click()
-    time.sleep(2)
     
     # Check that the expense was added successfully to the table 
     table_elements = self.driver.find_elements(By.XPATH, "//td[text()='25']")
