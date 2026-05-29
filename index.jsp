@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%
-    // 1. טיפול בקישור: אם המשתמש לחץ על "נקה נתונים", השרת יקבל בקשת GET וימחק את הזיכרון
     String action = request.getParameter("action");
     if ("clear".equals(action)) {
         session.removeAttribute("expenses");
-        response.sendRedirect(request.getRequestURI()); // רענון הדף נקי
+        response.sendRedirect(request.getRequestURI());    
         return;
     }
 
