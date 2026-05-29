@@ -57,7 +57,6 @@ class TestFulltest():
     time.sleep(1)
     error_msg = self.driver.execute_script('return document.getElementById("amount").validationMessage;')
     assert error_msg == "Please fill out this field." # Exact format of the message in english
-
     
     # Check that the expenseName text box exists, click on it and add a value
     elements = self.driver.find_elements(By.ID, "expenseName")
@@ -89,6 +88,11 @@ class TestFulltest():
     except AssertionError as e:
         print(e)
     
+    # Check that the submit button exists and click on it
+    elements = self.driver.find_elements(By.CSS_SELECTOR, "button")
+    assert len(elements) > 0
+    self.driver.find_element(By.CSS_SELECTOR, "button").click()
+    time.sleep(2)
     
     # Check that the expense was added successfully to the table 
     table_elements = self.driver.find_elements(By.XPATH, "//td[text()='25']")
