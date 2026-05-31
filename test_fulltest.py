@@ -46,12 +46,13 @@ class TestFulltest():
     self.driver.switch_to.window(self.vars["root"])
     time.sleep(1)
     
-    # Check empty form submission validation (validation message) 
+    # Check that the submit button exists, click it, and check empty form validation
+    elements = self.driver.find_elements(By.CSS_SELECTOR, "button")
+    assert len(elements) > 0
     self.driver.find_element(By.CSS_SELECTOR, "button").click()
     time.sleep(1)
     error_msg = self.driver.execute_script('return document.getElementById("amount").validationMessage;')
     assert error_msg == "Please fill out this field." # Exact format of the message in english
-
     
     # Check that the expenseName text box exists, click on it and add a value
     elements = self.driver.find_elements(By.ID, "expenseName")
@@ -83,7 +84,7 @@ class TestFulltest():
     except AssertionError as e:
         print(e)
     
-    # Check that the submit button exists and click on it
+    # Check that the submit button exists and click on it (Second click to submit actual data)
     elements = self.driver.find_elements(By.CSS_SELECTOR, "button")
     assert len(elements) > 0
     self.driver.find_element(By.CSS_SELECTOR, "button").click()
@@ -107,4 +108,3 @@ class TestFulltest():
     # Closing
     self.vars["win3901"] = self.wait_for_window(2000)
     self.vars["window_handles"] = self.driver.window_handles
-    
