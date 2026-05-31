@@ -8,7 +8,7 @@
         return;
     }
 
-   
+   //
     List<Map<String, String>> expenses = (List<Map<String, String>>) session.getAttribute("expenses");
     if (expenses == null) {
         expenses = new ArrayList<Map<String, String>>();
