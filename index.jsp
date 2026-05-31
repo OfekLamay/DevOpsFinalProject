@@ -15,7 +15,7 @@
         session.setAttribute("expenses", expenses);
     }
 
-    // 2. טיפול בכפתור: קליטת נתונים מהטופס אם נשלחה בקשת POST
+    
     String newName = request.getParameter("expenseName");
     String newAmount = request.getParameter("amount");
 
