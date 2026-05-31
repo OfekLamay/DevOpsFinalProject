@@ -8,7 +8,7 @@ import io.gatling.javaapi.jdbc.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import static io.gatling.javaapi.jdbc.JdbcDsl.*;
-
+// blablabla
 public class Load extends Simulation {
 
   private HttpProtocolBuilder httpProtocol = http
